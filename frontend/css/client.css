@@ -1,0 +1,869 @@
+/* =========================
+   BASE
+========================= */
+
+@font-face {
+    font-family: "Noto Sans";
+    src: url("../fonts/NotoSans-ExtraBold.ttf") format("truetype");
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "IBM Plex Serif";
+    src: url("../fonts/IBMPlexSerif-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    min-height: 100%;
+}
+
+body.client-body {
+    min-height: 100vh;
+
+    position: relative;
+
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(255, 0, 0, 0.8),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 90% 70%,
+            rgba(150, 0, 0, 0.65),
+            transparent 35%
+        ),
+        linear-gradient(
+            155deg,
+            #060606 0%,
+            #111111 35%,
+            #260606 65%,
+            #a60000 100%
+        );
+
+    background-attachment: fixed;
+
+    color: #ffffff;
+
+    font-family: "IBM Plex Serif", Georgia, serif;
+}
+
+.client-title,
+.company-section h2,
+.section-heading h2,
+.finish-panel h2,
+.brand-text,
+.client-field label,
+.question label,
+.rules-toggle,
+.client-submit {
+    font-family: "Noto Sans", Arial, sans-serif;
+    font-weight: 800;
+}
+
+.client-lead,
+.rules-content p,
+.finish-panel p,
+.client-error,
+.question textarea,
+.client-field input {
+    font-family: "IBM Plex Serif", Georgia, serif;
+    font-weight: 400;
+}
+
+
+/* =========================
+   BACKGROUND TEXT
+========================= */
+
+.client-background-text {
+    position: fixed;
+
+    inset: -20%;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    color: rgba(255, 30, 30, 0.16);
+
+    font-size: 18px;
+    font-weight: 700;
+
+    line-height: 6;
+
+    word-spacing: 60px;
+
+    transform: rotate(-16deg);
+
+    overflow: hidden;
+
+    user-select: none;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.client-header {
+    position: relative;
+
+    z-index: 2;
+
+    min-height: 130px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 26px clamp(24px, 5vw, 70px);
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.7);
+
+    background:
+        linear-gradient(
+            110deg,
+            rgba(230, 0, 0, 0.88),
+            rgba(0, 0, 0, 0.1) 65%
+        );
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+}
+
+.brand-mark {
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+}
+
+.brand-mark img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    display: block;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+
+    font-weight: 900;
+
+    line-height: 1.02;
+}
+
+.brand-text strong {
+    font-size:
+        clamp(24px, 4vw, 38px);
+}
+
+.brand-text span {
+    font-size:
+        clamp(18px, 3vw, 29px);
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.client-main {
+    position: relative;
+
+    z-index: 1;
+
+    width: min(900px, calc(100% - 40px));
+
+    margin: 0 auto;
+
+    padding:
+        clamp(60px, 9vw, 110px)
+        0
+        100px;
+}
+
+.client-main-wide {
+    width: min(
+        1000px,
+        calc(100% - 40px)
+    );
+}
+
+
+/* =========================
+   TEXT
+========================= */
+
+.client-kicker {
+    margin-bottom: 16px;
+
+    color: rgba(
+        255,
+        255,
+        255,
+        0.65
+    );
+
+    font-size: 14px;
+    font-weight: 700;
+
+    letter-spacing: 3px;
+}
+
+.client-title {
+    max-width: 900px;
+
+    font-size:
+        clamp(58px, 10vw, 112px);
+
+    font-weight: 900;
+
+    line-height: 0.92;
+
+    letter-spacing: -4px;
+}
+
+.client-title-medium {
+    font-size:
+        clamp(52px, 8vw, 92px);
+}
+
+.client-lead {
+    max-width: 680px;
+
+    margin-top: 30px;
+
+    font-size:
+        clamp(20px, 3vw, 30px);
+
+    line-height: 1.45;
+
+    color: rgba(
+        255,
+        255,
+        255,
+        0.92
+    );
+}
+
+.blue-line {
+    display: none;
+}
+
+
+/* =========================
+   INTRO
+========================= */
+
+.intro-section {
+    margin-bottom: 50px;
+}
+
+.company-section {
+    padding-bottom: 30px;
+
+    margin-bottom: 60px;
+
+    border-bottom:
+        1px solid rgba(
+            255,
+            255,
+            255,
+            0.35
+        );
+}
+
+.company-section h2 {
+    font-size:
+        clamp(28px, 5vw, 48px);
+}
+
+
+/* =========================
+   PANELS
+========================= */
+
+.client-panel {
+    padding:
+        clamp(28px, 5vw, 55px);
+
+    border:
+        1px solid rgba(
+            255,
+            255,
+            255,
+            0.75
+        );
+
+    background:
+        rgba(
+            0,
+            0,
+            0,
+            0.62
+        );
+
+    backdrop-filter: blur(3px);
+}
+
+.client-panel form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 30px;
+}
+
+.client-field label {
+    display: block;
+
+    margin-bottom: 18px;
+
+    font-size:
+        clamp(22px, 3vw, 34px);
+
+    font-weight: 900;
+}
+
+
+/* =========================
+   INPUTS
+========================= */
+
+.client-field input,
+.question textarea {
+    width: 100%;
+
+    border:
+        1px solid rgba(
+            255,
+            255,
+            255,
+            0.85
+        );
+
+    border-radius: 0;
+
+    outline: none;
+
+    background:
+        rgba(
+            5,
+            5,
+            5,
+            0.88
+        );
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    transition:
+        border-color 0.2s,
+        background 0.2s;
+}
+
+.client-field input {
+    min-height: 80px;
+
+    padding:
+        18px 22px;
+
+    font-size:
+        clamp(18px, 3vw, 28px);
+}
+
+.question textarea {
+    min-height: 130px;
+
+    padding:
+        20px;
+
+    resize: vertical;
+
+    font-size: 18px;
+
+    line-height: 1.5;
+}
+
+.client-field input::placeholder,
+.question textarea::placeholder {
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.62
+        );
+}
+
+.client-field input:focus,
+.question textarea:focus {
+    border-color: #ff1a1a;
+
+    background: #080808;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.client-submit {
+    align-self: flex-end;
+
+    width: auto;
+
+    min-width: 210px;
+
+    padding:
+        16px
+        28px;
+
+    border: none;
+    border-radius: 0;
+
+    background: #ef0000;
+
+    color: #ffffff;
+
+    font-size:
+        clamp(18px, 2.5vw, 26px);
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s,
+        transform 0.1s;
+}
+
+.client-submit:hover {
+    background: #ff1a1a;
+}
+
+.client-submit:active {
+    transform: translateY(2px);
+}
+
+.client-submit:disabled {
+    opacity: 0.55;
+
+    cursor: default;
+}
+
+.client-submit-large {
+    margin-top: 45px;
+
+    padding:
+        20px
+        32px;
+}
+
+
+/* =========================
+   ERRORS
+========================= */
+
+.client-error {
+    padding:
+        15px
+        18px;
+
+    border:
+        1px solid #ff4646;
+
+    color: #ffffff;
+
+    background:
+        rgba(
+            180,
+            0,
+            0,
+            0.45
+        );
+
+    line-height: 1.4;
+}
+
+
+/* =========================
+   RULES
+========================= */
+
+.rules-section {
+    margin:
+        60px
+        0
+        80px;
+
+    border:
+        1px solid rgba(
+            255,
+            255,
+            255,
+            0.75
+        );
+
+    background:
+        rgba(
+            0,
+            0,
+            0,
+            0.5
+        );
+}
+
+.rules-toggle {
+    width: 100%;
+
+    display: flex;
+    justify-content:
+        space-between;
+    align-items: center;
+
+    padding:
+        clamp(24px, 4vw, 38px);
+
+    border: none;
+
+    background:
+        transparent;
+
+    color: #ffffff;
+
+    font-size:
+        clamp(23px, 4vw, 38px);
+
+    font-weight: 900;
+
+    text-align: left;
+
+    cursor: pointer;
+}
+
+.rules-plus {
+    min-width: 64px;
+
+    padding-left: 28px;
+
+    border-left:
+        1px solid rgba(
+            255,
+            255,
+            255,
+            0.8
+        );
+
+    font-size: 48px;
+
+    line-height: 1;
+
+    text-align: center;
+}
+
+.rules-content {
+    padding:
+        0
+        clamp(24px, 4vw, 38px)
+        clamp(30px, 5vw, 50px);
+}
+
+.rules-content-hidden {
+    display: none;
+}
+
+.rules-line {
+    width: 55px;
+    height: 1px;
+
+    margin-bottom: 20px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.75
+        );
+}
+
+.rules-content p {
+    font-size:
+        clamp(18px, 2.5vw, 26px);
+
+    line-height: 1.55;
+}
+
+
+/* =========================
+   FACTORS
+========================= */
+
+.section-heading {
+    margin-bottom: 30px;
+}
+
+.section-heading h2 {
+    font-size:
+        clamp(62px, 10vw, 110px);
+
+    line-height: 0.9;
+}
+
+#questions-container {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
+
+    gap: 28px;
+}
+
+.question {
+    min-height: 360px;
+
+    display: flex;
+    flex-direction: column;
+
+    padding:
+        clamp(24px, 4vw, 36px);
+
+    border:
+        1px solid rgba(
+            255,
+            255,
+            255,
+            0.75
+        );
+
+    background:
+        rgba(
+            0,
+            0,
+            0,
+            0.6
+        );
+}
+
+.question label {
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+
+    margin-bottom: 25px;
+
+    font-size:
+        clamp(19px, 2.5vw, 29px);
+
+    font-weight: 900;
+
+    line-height: 1.25;
+}
+
+.question-number {
+    margin-bottom: 15px;
+
+    color: #ff1a1a;
+
+    font-size: 15px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================
+   FINISH
+========================= */
+
+.finish-panel {
+    margin-top: 55px;
+}
+
+.finish-panel h2 {
+    font-size:
+        clamp(28px, 4vw, 44px);
+
+    line-height: 1.15;
+}
+
+.finish-panel p {
+    margin-top: 20px;
+
+    font-size:
+        clamp(20px, 3vw, 28px);
+
+    line-height: 1.45;
+}
+
+.panel-line {
+    width: 55px;
+    height: 1px;
+
+    margin:
+        28px 0;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.8
+        );
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .client-header {
+        min-height: 100px;
+
+        padding:
+            22px
+            20px;
+    }
+
+    .brand {
+        gap: 12px;
+    }
+
+    .brand-mark {
+        width: 38px;
+        height: 38px;
+    }
+
+    .brand-text strong {
+        font-size: 22px;
+    }
+
+    .brand-text span {
+        font-size: 17px;
+    }
+
+
+    .client-main,
+    .client-main-wide {
+        width:
+            calc(100% - 30px);
+
+        padding-top: 55px;
+    }
+
+
+    .client-title {
+        font-size: 56px;
+
+        letter-spacing: -3px;
+    }
+
+    .client-title-medium {
+        font-size: 48px;
+    }
+
+
+    .client-lead {
+        font-size: 20px;
+    }
+
+
+    .client-panel {
+        padding:
+            28px
+            22px;
+    }
+
+
+    .client-submit {
+        width: 100%;
+    }
+
+
+    #questions-container {
+        grid-template-columns: 1fr;
+    }
+
+
+    .question {
+        min-height: 0;
+    }
+
+
+    .rules-toggle {
+        padding:
+            22px
+            20px;
+
+        font-size: 22px;
+    }
+
+    .rules-plus {
+        min-width: 48px;
+
+        padding-left: 16px;
+
+        font-size: 36px;
+    }
+
+
+    .rules-content {
+        padding:
+            0
+            20px
+            25px;
+    }
+
+}
+
+
+/* =========================
+   VERY SMALL
+========================= */
+
+@media (max-width: 420px) {
+
+    .client-title {
+        font-size: 47px;
+    }
+
+    .client-title-medium {
+        font-size: 42px;
+    }
+
+    .brand-text span {
+        font-size: 14px;
+    }
+
+}

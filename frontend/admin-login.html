@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Вход для организатора</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+</head>
+
+<body>
+
+<main class="page">
+
+    <section class="card">
+
+        <p class="small-text">
+            Панель организатора
+        </p>
+
+        <h1>Вход</h1>
+
+        <p class="description">
+            Введите пароль администратора.
+        </p>
+
+        <form id="admin-login-form">
+
+            <div>
+                <label for="password">
+                    Пароль
+                </label>
+
+                <input
+                    id="password"
+                    type="password"
+                    required
+                    autocomplete="current-password"
+                >
+            </div>
+
+            <p
+                id="login-error"
+                class="error-message"
+                hidden
+            ></p>
+
+            <button type="submit">
+                Войти
+            </button>
+
+        </form>
+
+    </section>
+
+</main>
+
+<script src="js/admin-login.js"></script>
+
+</body>
+</html>

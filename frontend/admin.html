@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Панель организатора</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+</head>
+
+<body>
+
+<main class="admin-page">
+
+    <div class="admin-container">
+
+        <!-- Шапка -->
+        <header class="admin-header">
+
+            <div>
+                <p class="small-text">
+                    Панель организатора
+                </p>
+
+                <h1>
+                    Проверка ведомостей
+                </h1>
+            </div>
+
+
+            <div class="admin-header-actions">
+
+                <button
+                    id="refresh-button"
+                    class="secondary-button"
+                    type="button"
+                >
+                    Обновить
+                </button>
+
+                <button
+                    id="logout-button"
+                    class="secondary-button"
+                    type="button"
+                >
+                    Выйти
+                </button>
+
+                <button
+                    id="archive-all-button"
+                    class="secondary-button danger-button"
+                    type="button"
+                >
+                    Завершить поток
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- Общая таблица -->
+        <section class="admin-section">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Результаты</h2>
+
+                    <p class="admin-section-description">
+                        Таблица обновляется после каждой проверки фактора.
+                    </p>
+                </div>
+
+                <div class="admin-meta">
+                    Компаний:
+                    <strong id="submissions-count">0</strong>
+                </div>
+
+            </div>
+
+
+            <div class="results-table-wrapper">
+
+                <table class="results-table">
+
+                    <thead>
+                        <tr>
+                            <th>Компания</th>
+                            <th>Ответов</th>
+                            <th>Блок А</th>
+                            <th>Фигуранты</th>
+                            <th>Снижение</th>
+                            <th>Выплата</th>
+                            <th>Проверено</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="results-table-body">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- Ведомости -->
+        <section class="admin-section">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Ведомости компаний</h2>
+                    <label class="hide-reviewed-control">
+
+                        <input
+                            id="hide-reviewed"
+                            type="checkbox"
+                        >
+
+                        Скрывать полностью проверенные
+
+                    </label>
+
+                    <p class="admin-section-description">
+                        Проверяются только 8 факторов,
+                        влияющих на итоговый расчёт.
+                    </p>
+                </div>
+
+                <span id="last-update"></span>
+
+            </div>
+
+
+            <div id="submissions-container">
+
+                <p class="empty-message">
+                    Пока никто не отправил ведомость.
+                </p>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<script src="js/admin.js?v=3"></script>
+
+</body>
+
+</html>

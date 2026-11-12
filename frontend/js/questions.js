@@ -1,131 +1,348 @@
-const questions = [
-    {
-        id: 1,
-        text: "Какой ответ на первый вопрос?",
-        type: "input"
-    },
-    {
-        id: 2,
-        text: "Какой ответ на второй вопрос?",
-        type: "input"
-    },
-    {
-        id: 3,
-        text: "Какой ответ на третий вопрос?",
-        type: "textarea"
-    },
-    {
-        id: 4,
-        text: "Какой ответ на четвёртый вопрос?",
-        type: "input"
-    },
-    {
-        id: 5,
-        text: "Какой ответ на пятый вопрос?",
-        type: "textarea"
-    }
-];
+// =========================
+// ЭЛЕМЕНТЫ СТРАНИЦЫ
+// =========================
+
+const companyName =
+    localStorage.getItem("teamName");
 
 
-const teamName = localStorage.getItem("teamName");
-
-if (!teamName) {
+if (!companyName) {
     window.location.href = "index.html";
 }
 
 
-const teamNameElement = document.querySelector("#team-name");
-const questionsContainer = document.querySelector("#questions-container");
-const form = document.querySelector("#questions-form");
+const teamNameElement =
+    document.querySelector("#team-name");
+
+const questionsContainer =
+    document.querySelector("#questions-container");
+
+const form =
+    document.querySelector("#questions-form");
+
+const rulesText =
+    document.querySelector("#rules-text");
+
+const rulesToggle =
+    document.querySelector("#rules-toggle");
+
+const rulesContent =
+    document.querySelector("#rules-content");
+
+const submitButton =
+    document.querySelector("#submit-button");
 
 
-teamNameElement.textContent = teamName;
+teamNameElement.textContent = companyName;
 
 
-// Генерируем вопросы
-questions.forEach((question, index) => {
-
-    const questionElement = document.createElement("div");
-
-    questionElement.classList.add("question");
+// Здесь будут храниться
+// полученные с backend факторы
+let factors = [];
 
 
-    let answerField;
+// =========================
+// ПРАВИЛА
+// =========================
 
-if (question.type === "textarea") {
-    answerField = `
-        <textarea
-            id="answer-${question.id}"
-            name="answer-${question.id}"
-            placeholder="Введите ответ"
-            rows="4"
-        ></textarea>
-    `;
-} else {
-    answerField = `
-        <input
-            id="answer-${question.id}"
-            name="answer-${question.id}"
-            type="text"
-            placeholder="Введите ответ"
-        >
-    `;
+rulesToggle.addEventListener(
+    "click",
+    () => {
+
+        rulesContent.classList.toggle(
+            "rules-content-hidden"
+        );
+
+    }
+);
+
+
+// =========================
+// ЗАГРУЗКА ФАКТОРОВ
+// =========================
+
+async function loadFactors() {
+
+    try {
+
+        const response =
+            await fetch("/api/factors");
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Не удалось получить список факторов"
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        factors = data.factors;
+
+        rulesText.textContent =
+            data.rules;
+
+
+        renderFactors();
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Ошибка загрузки факторов:",
+            error
+        );
+
+
+        questionsContainer.innerHTML = `
+            <p class="error-message">
+                Не удалось загрузить ведомость.
+                Попробуйте обновить страницу.
+            </p>
+        `;
+
+
+        submitButton.disabled = true;
+
+    }
 }
 
 
-    questionElement.innerHTML = `
-        <label for="answer-${question.id}">
+// =========================
+// ОТОБРАЖЕНИЕ ФАКТОРОВ
+// =========================
 
-            <span class="question-number">
-                ${String(index + 1).padStart(2, "0")}
-            </span>
+function renderFactors() {
 
-            ${question.text}
-
-        </label>
-
-        ${answerField}
-    `;
+    questionsContainer.innerHTML = "";
 
 
-    questionsContainer.appendChild(questionElement);
-});
+    factors.forEach((factor) => {
+
+        const factorElement =
+            document.createElement("div");
 
 
-// Отправка формы
-form.addEventListener("submit", (event) => {
-
-    event.preventDefault();
-
-    const formData = new FormData(form);
-
-    const answers = questions.map((question) => {
-    const answer = formData.get(`answer-${question.id}`)?.trim() || "";
-
-    return {
-        questionId: question.id,
-        question: question.text,
-        answer: answer
-    };
-});
+        factorElement.classList.add(
+            "question"
+        );
 
 
-    const data = {
-        teamName: teamName,
-        answers: answers
-    };
+        factorElement.innerHTML = `
+            <label for="answer-${factor.id}">
+
+                <span class="question-number">
+                    ${String(factor.id).padStart(2, "0")}
+                </span>
+
+                ${escapeHtml(factor.text)}
+
+            </label>
 
 
-    console.log(data);
+            <textarea
+                id="answer-${factor.id}"
+                name="answer-${factor.id}"
+                placeholder="Ваше обоснование"
+                rows="3"
+            ></textarea>
+        `;
 
 
-    // Пока сохраняем локально.
-    // Потом здесь будет отправка на backend.
-    localStorage.setItem(
-        "questAnswers",
-        JSON.stringify(data)
-    );
+        questionsContainer.appendChild(
+            factorElement
+        );
+
+    });
+}
 
 
-    window.location.href = "end.html";
-});
+// =========================
+// ОТПРАВКА ВЕДОМОСТИ
+// =========================
+
+form.addEventListener(
+    "submit",
+    async (event) => {
+
+        event.preventDefault();
+
+
+        // Защита от повторного клика
+        submitButton.disabled = true;
+
+        submitButton.textContent =
+            "Отправляем...";
+
+
+        const formData =
+            new FormData(form);
+
+
+        // Собираем ответы
+        // на все 17 факторов
+        const answers =
+            factors.map((factor) => {
+
+                const answer =
+                    formData
+                        .get(
+                            `answer-${factor.id}`
+                        )
+                        ?.trim()
+                    || "";
+
+
+                return {
+
+                    questionId:
+                        factor.id,
+
+                    question:
+                        factor.text,
+
+                    answer:
+                        answer
+
+                };
+
+            });
+
+
+        const data = {
+
+            teamName:
+                companyName,
+
+            answers:
+                answers
+
+        };
+
+
+        try {
+
+            const response =
+                await fetch(
+                    "/api/answers",
+                    {
+
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body:
+                            JSON.stringify(data)
+
+                    }
+                );
+
+
+            // Компания уже отправляла ответы
+            if (response.status === 409) {
+
+                const errorData =
+                    await response.json();
+
+
+                alert(
+                    errorData.detail
+                    ||
+                    "Компания с таким названием уже отправила ведомость."
+                );
+
+
+                submitButton.disabled = false;
+
+                submitButton.textContent =
+                    "Отправить ведомость";
+
+
+                return;
+            }
+
+
+            // Любая другая ошибка backend
+            if (!response.ok) {
+
+                throw new Error(
+                    "Ошибка отправки ведомости"
+                );
+
+            }
+
+
+            const result =
+                await response.json();
+
+
+            console.log(
+                "Ведомость сохранена:",
+                result
+            );
+
+
+            // После успешной отправки
+            // переходим на финальную страницу
+            window.location.href =
+                "end.html";
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Ошибка отправки:",
+                error
+            );
+
+
+            alert(
+                "Не удалось отправить ведомость. " +
+                "Попробуйте ещё раз."
+            );
+
+
+            submitButton.disabled = false;
+
+            submitButton.textContent =
+                "Отправить ведомость";
+
+        }
+
+    }
+);
+
+
+// =========================
+// БЕЗОПАСНЫЙ ВЫВОД ТЕКСТА
+// =========================
+
+function escapeHtml(text) {
+
+    const element =
+        document.createElement("div");
+
+
+    element.textContent =
+        text ?? "";
+
+
+    return element.innerHTML;
+}
+
+
+// =========================
+// ЗАПУСК
+// =========================
+
+loadFactors();

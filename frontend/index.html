@@ -1,42 +1,109 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Квест</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="stylesheet" href="css/style.css">
+    <title>Страховая оценка</title>
+
+    <link
+        rel="stylesheet"
+        href="css/client.css"
+    >
 </head>
 
-<body>
+<body class="client-body">
 
-<main class="page">
+<div class="client-background-text">
+    детектив: эффект наблюдателя
+    детектив: эффект наблюдателя
+    детектив: эффект наблюдателя
+    детектив: эффект наблюдателя
+    детектив: эффект наблюдателя
+    детектив: эффект наблюдателя
+</div>
 
-    <section class="card welcome-card">
 
-        <h1>Добро пожаловать!</h1>
+<header class="client-header">
 
-        <p class="description">
-            Введите название вашей команды, чтобы приступить к выполнению квеста.
+    <div class="brand">
+
+        <div class="brand-mark">
+            <img src="images/eye.png" alt="Логотип">
+        </div>
+
+        <div class="brand-text">
+            <strong>детектив:</strong>
+            <span>эффект наблюдателя</span>
+        </div>
+
+    </div>
+
+</header>
+
+
+<main class="client-main">
+
+    <section class="intro-section">
+
+        <p class="client-kicker">
+            СТРАХОВАЯ ОЦЕНКА
         </p>
+
+        <h1 class="client-title">
+            ДОБРО<br>
+            ПОЖАЛОВАТЬ
+        </h1>
+
+        <div class="blue-line"></div>
+
+        <p class="client-lead">
+            Введите название компании-оценщика,
+            чтобы приступить к расследованию.
+        </p>
+
+    </section>
+
+
+    <section class="client-panel">
 
         <form id="team-form">
 
-            <label for="team-name">
-                Название команды
-            </label>
+            <div class="client-field">
 
-            <input
-                id="team-name"
-                type="text"
-                placeholder="Введите название команды"
-                autocomplete="off"
-                required
+                <label for="team-name">
+                    Название компании-оценщика
+                </label>
+
+                <input
+                    id="team-name"
+                    type="text"
+                    placeholder="Введите название"
+                    autocomplete="off"
+                    required
+                >
+
+            </div>
+
+
+            <p
+                id="company-error"
+                class="client-error"
+                hidden
+            ></p>
+
+
+            <button
+                id="start-button"
+                class="client-submit"
+                type="submit"
             >
-
-            <button type="submit">
-                Начать квест
+                НАЧАТЬ
             </button>
 
         </form>
@@ -45,7 +112,9 @@
 
 </main>
 
-<script src="js/index.js"></script>
+
+<script src="js/index.js?v=2"></script>
 
 </body>
+
 </html>

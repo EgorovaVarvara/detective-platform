@@ -16,8 +16,10 @@ html {
 body {
     min-height: 100vh;
 
-    background: #f4f4f6;
-    color: #202124;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .page {
@@ -237,4 +239,640 @@ button:active {
     h1 {
         font-size: 30px;
     }
+}
+
+
+/* =========================
+   ADMIN
+========================= */
+
+.admin-page {
+    min-height: 100vh;
+    padding: 40px 24px 80px;
+
+    background: rgba(244, 244, 246, 0.6);
+}
+
+.admin-container {
+    width: 100%;
+    max-width: 1200px;
+
+    margin: 0 auto;
+}
+
+
+/* HEADER */
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 30px;
+
+    margin-bottom: 40px;
+}
+
+.admin-header h1 {
+    margin-bottom: 0;
+}
+
+.admin-header-actions {
+    display: flex;
+
+    gap: 10px;
+}
+
+.secondary-button {
+    width: auto;
+
+    padding: 12px 20px;
+
+    background: white;
+    color: #202124;
+
+    border: 1px solid #d8d8df;
+}
+
+
+/* SECTION */
+
+.admin-section {
+    margin-bottom: 50px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    gap: 30px;
+
+    margin-bottom: 18px;
+}
+
+.section-header h2 {
+    font-size: 28px;
+
+    margin-bottom: 6px;
+}
+
+.admin-section-description {
+    color: #777780;
+
+    font-size: 14px;
+}
+
+.admin-meta,
+#last-update {
+    color: #777780;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   RESULTS TABLE
+========================= */
+
+.results-table-wrapper {
+    overflow-x: auto;
+
+    background: white;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.results-table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+.results-table th,
+.results-table td {
+    padding: 16px 18px;
+
+    text-align: left;
+
+    border-bottom:
+        1px solid #eeeeef;
+
+    white-space: nowrap;
+}
+
+.results-table th {
+    color: #777780;
+
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+
+    background: #fafafa;
+}
+
+.results-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.company-cell {
+    font-weight: 700;
+}
+
+.company-error {
+    color: rgb(255, 97, 97);
+}
+
+.table-secondary {
+    color: #9999a0;
+
+    font-size: 12px;
+}
+
+.payout-cell {
+    font-weight: 700;
+
+    font-size: 17px;
+}
+
+.table-empty {
+    padding: 30px !important;
+
+    text-align: center !important;
+
+    color: #9999a0;
+}
+
+
+/* PROGRESS */
+
+.review-progress {
+    display: inline-block;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    background: #eeeeef;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.review-progress-complete {
+    background: #e5f6ea;
+
+    color: #246b37;
+}
+
+
+/* =========================
+   COMPANY CARD
+========================= */
+
+.admin-submission-card {
+    margin-bottom: 28px;
+
+    padding: 28px;
+
+    background: white;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.admin-submission-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 30px;
+
+    padding-bottom: 24px;
+    margin-bottom: 6px;
+
+    border-bottom:
+        1px solid #eeeeef;
+}
+
+.admin-submission-header h2 {
+    font-size: 26px;
+
+    margin-top: 3px;
+}
+
+.submission-date {
+    margin-top: 6px;
+
+    color: #9999a0;
+
+    font-size: 13px;
+}
+
+
+/* SCORE */
+
+.submission-score {
+    display: flex;
+
+    gap: 12px;
+}
+
+.submission-score div {
+    min-width: 105px;
+
+    padding: 12px 14px;
+
+    background: #f5f5f7;
+
+    border-radius: 10px;
+}
+
+.submission-score span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #777780;
+
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+.submission-score strong {
+    font-size: 17px;
+}
+
+
+/* =========================
+   FACTOR
+========================= */
+
+.factor-review {
+    padding: 25px 0;
+
+    border-bottom:
+        1px solid #eeeeef;
+}
+
+.factor-review:last-child {
+    border-bottom: none;
+}
+
+.factor-review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 20px;
+
+    margin-bottom: 18px;
+}
+
+.factor-review h3 {
+    max-width: 720px;
+
+    font-size: 18px;
+    line-height: 1.4;
+}
+
+.factor-meta {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    margin-bottom: 8px;
+}
+
+.factor-number {
+    color: #9999a0;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+/* BADGES */
+
+.block-badge,
+.person-badge {
+    display: inline-block;
+
+    padding: 4px 7px;
+
+    border-radius: 6px;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.block-a {
+    background: #ececff;
+
+    color: #4c4c99;
+}
+
+.block-b {
+    background: #fff1dd;
+
+    color: #8a5a13;
+}
+
+.person-badge {
+    background: #eeeeef;
+
+    color: #55555d;
+}
+
+
+/* STATUS */
+
+.status-label {
+    flex-shrink: 0;
+
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.status-unreviewed {
+    background: #eeeeef;
+
+    color: #66666e;
+}
+
+.status-correct {
+    background: #e4f7e9;
+
+    color: #207337;
+}
+
+.status-incorrect {
+    background: #ffe6e4;
+
+    color: #a82d24;
+}
+
+.status-partial {
+    background: #fff3cd;
+    color: #856404;
+}
+
+
+/* ANSWER */
+
+.factor-answer {
+    padding: 16px;
+
+    margin-bottom: 14px;
+
+    background: #f7f7f8;
+
+    border-radius: 10px;
+}
+
+.factor-label {
+    margin-bottom: 6px;
+
+    color: #898991;
+
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.factor-answer-text {
+    line-height: 1.55;
+
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.no-answer {
+    color: #aaaab0;
+
+    font-style: italic;
+}
+
+
+/* ORGANIZER HELP */
+
+.organizer-reference {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap: 14px;
+
+    margin-bottom: 18px;
+}
+
+.organizer-reference > div {
+    padding: 14px;
+
+    border: 1px solid #e7e7eb;
+    border-radius: 10px;
+}
+
+.organizer-reference p:not(.factor-label) {
+    line-height: 1.5;
+
+    font-size: 14px;
+
+    color: #56565e;
+}
+
+
+/* =========================
+   REVIEW BUTTONS
+========================= */
+
+.review-buttons {
+    display: flex;
+
+    gap: 8px;
+}
+
+.review-button {
+    width: auto;
+
+    padding: 9px 14px;
+
+    border: 1px solid #d8d8df;
+
+    background: white;
+    color: #44444b;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+
+    cursor: pointer;
+}
+
+.review-button:hover {
+    opacity: 1;
+
+    background: #f5f5f6;
+}
+
+.review-button-active.review-unreviewed {
+    background: #eeeeef;
+
+    border-color: #c8c8ce;
+
+    color: #44444b;
+}
+
+.review-button-active.review-correct {
+    background: #dff4e5;
+
+    border-color: #8fcca0;
+
+    color: #1f6b34;
+}
+
+.review-button-active.review-incorrect {
+    background: #ffe1de;
+
+    border-color: #e5a29c;
+
+    color: #9c2921;
+}
+
+.review-button-active.review-partial {
+    background: #fff0bd;
+    border-color: #d8b44c;
+    color: #795b00;
+}
+
+
+/* STATUS BORDER */
+
+.factor-status-correct {
+    border-left: 3px solid #74b987;
+
+    padding-left: 17px;
+}
+
+.factor-status-incorrect {
+    border-left: 3px solid #dc7d74;
+
+    padding-left: 17px;
+}
+
+.factor-status-partial {
+    border-left: 3px solid #d8b44c;
+    padding-left: 17px;
+}
+
+
+/* =========================
+   EMPTY / ERROR
+========================= */
+
+.empty-message,
+.error-message {
+    padding: 30px;
+
+    background: white;
+
+    border-radius: 14px;
+
+    text-align: center;
+
+    color: #777780;
+}
+
+.error-message {
+    color: #b3261e;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 800px) {
+
+    .admin-page {
+        padding: 24px 14px 60px;
+    }
+
+    .admin-header {
+        flex-direction: column;
+    }
+
+    .admin-header-actions {
+        width: 100%;
+    }
+
+    .admin-header-actions button {
+        flex: 1;
+    }
+
+    .section-header {
+        align-items: flex-start;
+        flex-direction: column;
+
+        gap: 6px;
+    }
+
+    .admin-submission-card {
+        padding: 20px 16px;
+    }
+
+    .admin-submission-header {
+        flex-direction: column;
+    }
+
+    .submission-score {
+        width: 100%;
+
+        overflow-x: auto;
+    }
+
+    .submission-score div {
+        flex: 1;
+
+        min-width: 100px;
+    }
+
+    .factor-review-header {
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+    .organizer-reference {
+        grid-template-columns: 1fr;
+    }
+
+    .review-buttons {
+        display: grid;
+
+        grid-template-columns:
+            1fr
+            1fr
+            1fr;
+    }
+
+    .review-button {
+        width: 100%;
+
+        padding: 9px 5px;
+    }
+
 }

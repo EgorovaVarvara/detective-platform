@@ -1,40 +1,142 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Вопросы</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="stylesheet" href="css/style.css">
+    <title>Ведомость страховой оценки</title>
+
+    <link
+        rel="stylesheet"
+        href="css/client.css"
+    >
 </head>
 
-<body>
+<body class="client-body">
 
-<main class="page">
+<div class="client-background-text">
+    детектив: эффект наблюдателя
+    детектив: эффект наблюдателя
+    детектив: эффект наблюдателя
+    детектив: эффект наблюдателя
+    детектив: эффект наблюдателя
+    детектив: эффект наблюдателя
+</div>
 
-    <section class="card quest-card">
 
-        <div class="quest-header">
-            <div>
-                <p class="small-text">Команда</p>
-                <h2 id="team-name"></h2>
-            </div>
+<header class="client-header">
+
+    <div class="brand">
+
+        <div class="brand-mark">
+            <img src="images/eye.png" alt="Логотип">
         </div>
 
-        <h1>Вопросы</h1>
+        <div class="brand-text">
+            <strong>детектив:</strong>
+            <span>эффект наблюдателя</span>
+        </div>
 
-        <p class="description">
-            Ответьте на все вопросы и отправьте ответы.
+    </div>
+
+</header>
+
+
+<main class="client-main client-main-wide">
+
+    <section class="company-section">
+
+        <p class="client-kicker">
+            КОМПАНИЯ-ОЦЕНЩИК
         </p>
+
+        <h2 id="team-name"></h2>
+
+    </section>
+
+
+    <section class="intro-section">
+
+        <h1 class="client-title client-title-medium">
+            ВЕДОМОСТЬ<br>
+            СТРАХОВОЙ<br>
+            ОЦЕНКИ
+        </h1>
+
+        <div class="blue-line"></div>
+
+        <p class="client-lead">
+            Обоснуйте факторы, которые удалось
+            подтвердить в ходе расследования.
+        </p>
+
+    </section>
+
+
+    <section class="rules-section">
+
+        <button
+            id="rules-toggle"
+            class="rules-toggle"
+            type="button"
+        >
+            <span>
+                ПРАВИЛА ЗАПОЛНЕНИЯ
+            </span>
+
+            <span class="rules-plus">
+                +
+            </span>
+        </button>
+
+
+        <div
+            id="rules-content"
+            class="rules-content"
+        >
+
+            <div class="rules-line"></div>
+
+            <p id="rules-text">
+                Загрузка правил...
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="factors-section">
+
+        <div class="section-heading">
+
+            <p class="client-kicker">
+                ВАША ОЦЕНКА
+            </p>
+
+            <h2>
+                ФАКТОРЫ
+            </h2>
+
+        </div>
+
 
         <form id="questions-form">
 
-            <!-- Сюда JavaScript добавит вопросы -->
             <div id="questions-container"></div>
 
-            <button type="submit">
-                Отправить ответы
+
+            <button
+                id="submit-button"
+                class="client-submit client-submit-large"
+                type="submit"
+            >
+                ОТПРАВИТЬ ВЕДОМОСТЬ
             </button>
 
         </form>
@@ -43,7 +145,9 @@
 
 </main>
 
-<script src="js/questions.js"></script>
+
+<script src="js/questions.js?v=2"></script>
 
 </body>
+
 </html>
